@@ -1,0 +1,13 @@
+{
+  "name": "contador-de-votos",
+  "version": "1.0.0",
+  "description": "Un contador de votos a favor y en contra del aborto en base a datos de un excel",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "author": "Nick Risaro",
+  "dependencies": {
+    "now": "^11.2.4"
+  }
+}
