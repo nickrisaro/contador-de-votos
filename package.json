@@ -6,6 +6,11 @@
   "scripts": {
     "start": "node app.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nickrisaro/contador-de-votos"
+  },
+  "license": "MIT",
   "author": "Nick Risaro",
   "dependencies": {
     "now": "^11.2.4"
