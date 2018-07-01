@@ -31,7 +31,7 @@ server.listen(port, hostname, () => {
 });
 
 setImmediate(obtenerVotos, acumuladorDeVotos);
-setInterval(obtenerVotos, 60000, acumuladorDeVotos);
+setInterval(obtenerVotos, 3600000, acumuladorDeVotos);
 
 function obtenerVotos(acumuladorDeVotos) {
   console.log('Buscando nuevos votos');
