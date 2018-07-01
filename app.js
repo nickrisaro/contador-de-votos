@@ -1,6 +1,6 @@
 const http = require('http');
 
-const hostname = '127.0.0.1';
+const hostname = '0.0.0.0';
 const port = 3000;
 
 const acumuladorDeVotos = {
@@ -11,6 +11,7 @@ const acumuladorDeVotos = {
 const server = http.createServer((req, res) => {
   res.statusCode = 200;
   res.setHeader('Content-Type', 'application/json');
+  res.setHeader('Access-Control-Allow-Origin','*');
   res.end(JSON.stringify(acumuladorDeVotos));
 });
 
