@@ -14,7 +14,8 @@ const acumuladorDeVotos = {
   aFavor: 0,
   enContra: 0,
   noConfirmado: 0,
-  seAbstiene: 0
+  seAbstiene: 0,
+  fechaUltimaActualizacion: 0
 }
 
 const server = http.createServer((req, res) => {
@@ -71,6 +72,7 @@ function obtenerVotos(acumuladorDeVotos) {
       acumuladorDeVotos.enContra = enContra;
       acumuladorDeVotos.noConfirmado = noConfirmado;
       acumuladorDeVotos.seAbstiene = seAbstiene;
+      acumuladorDeVotos.fechaUltimaActualizacion = Date.now();
 
     });
   });
