@@ -7,7 +7,7 @@ const { ID_PLANILLA, GOOGLE_API_KEY } = process.env
 
 var options = {
   hostname: 'sheets.googleapis.com',
-  path: '/v4/spreadsheets/' + ID_PLANILLA + '/values/Senadores!S2:S74?key=' + GOOGLE_API_KEY,
+  path: '/v4/spreadsheets/' + ID_PLANILLA + '/values/Senadores!S2:S73?key=' + GOOGLE_API_KEY,
 }
 
 const acumuladorDeVotos = {
