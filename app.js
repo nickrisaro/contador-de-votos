@@ -53,27 +53,31 @@ function obtenerVotos(acumuladorDeVotos) {
       var noConfirmado = 0;
       var seAbstiene = 0;
 
-      votos.forEach(voto => {
-        const posicion = voto[0];
-        if(posicion === 'A Favor') {
-          aFavor++;
-        } else if(posicion === 'En Contra') {
-          enContra++;
-        } else if(posicion === 'No confirmado') {
-          noConfirmado++;
-        } else if(posicion === 'Se Abstiene') {
-          seAbstiene++;
-        } else {
-          console.log('Voto no reconocido ' + voto[0]);
-        }
-      });
+      if(votos != undefined && votos != null) {
+        votos.forEach(voto => {
+          const posicion = voto[0];
+          if(posicion === 'A Favor') {
+            aFavor++;
+          } else if(posicion === 'En Contra') {
+            enContra++;
+          } else if(posicion === 'No confirmado') {
+            noConfirmado++;
+          } else if(posicion === 'Se Abstiene') {
+            seAbstiene++;
+          } else {
+            console.log('Voto no reconocido ' + voto[0]);
+          }
+        });
 
-      acumuladorDeVotos.aFavor = aFavor;
-      acumuladorDeVotos.enContra = enContra;
-      acumuladorDeVotos.noConfirmado = noConfirmado;
-      acumuladorDeVotos.seAbstiene = seAbstiene;
-      acumuladorDeVotos.fechaUltimaActualizacion = Date.now();
-
+        acumuladorDeVotos.aFavor = aFavor;
+        acumuladorDeVotos.enContra = enContra;
+        acumuladorDeVotos.noConfirmado = noConfirmado;
+        acumuladorDeVotos.seAbstiene = seAbstiene;
+        acumuladorDeVotos.fechaUltimaActualizacion = Date.now();
+      } else {
+        console.log('No hay votos: ' + data);
+        console.log(data);
+      }
     });
   });
   request.on('error', (e) => {
