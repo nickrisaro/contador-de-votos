@@ -1,28 +1,18 @@
 const http = require('http');
-const https = require('https');
+const recolectorDeVotos = require("./recolectorDeVotos");
 
 const hostname = '0.0.0.0';
 const port = 3000;
-const { ID_PLANILLA, GOOGLE_API_KEY } = process.env
+var requestCount = 1;
 
-var options = {
-  hostname: 'sheets.googleapis.com',
-  path: '/v4/spreadsheets/' + ID_PLANILLA + '/values/Senadores!S2:S73?key=' + GOOGLE_API_KEY,
-}
-
-const acumuladorDeVotos = {
-  aFavor: 0,
-  enContra: 0,
-  noConfirmado: 0,
-  seAbstiene: 0,
-  fechaUltimaActualizacion: 0
-}
+const recolector = new recolectorDeVotos();
 
 const server = http.createServer((req, res) => {
   res.statusCode = 200;
   res.setHeader('Content-Type', 'application/json');
   res.setHeader('Access-Control-Allow-Origin','*');
-  res.end(JSON.stringify(acumuladorDeVotos));
+  console.log(Date.now() + ", " + requestCount++);
+  res.end(JSON.stringify(recolector.votosAcumulados()));
 });
 
 server.on('error', (e) => {
@@ -33,57 +23,5 @@ server.listen(port, hostname, () => {
   console.log(`Server running at http://${hostname}:${port}/`);
 });
 
-setImmediate(obtenerVotos, acumuladorDeVotos);
-setInterval(obtenerVotos, 86400000, acumuladorDeVotos);
-
-function obtenerVotos(acumuladorDeVotos) {
-  console.log('Buscando nuevos votos');
-
-  var request = https.request(options, function (res) {
-    var data = '';
-    res.on('data', (chunk) => {
-        data += chunk;
-    });
-    res.on('end', () => {
-
-      const votos = JSON.parse(data).values;
-
-      var aFavor = 0;
-      var enContra = 0;
-      var noConfirmado = 0;
-      var seAbstiene = 0;
-
-      if(votos != undefined && votos != null) {
-        votos.forEach(voto => {
-          const posicion = voto[0];
-          if(posicion === 'A Favor') {
-            aFavor++;
-          } else if(posicion === 'En Contra') {
-            enContra++;
-          } else if(posicion === 'No confirmado') {
-            noConfirmado++;
-          } else if(posicion === 'Se Abstiene') {
-            seAbstiene++;
-          } else {
-            console.log('Voto no reconocido ' + voto[0]);
-          }
-        });
-
-        acumuladorDeVotos.aFavor = aFavor;
-        acumuladorDeVotos.enContra = enContra;
-        acumuladorDeVotos.noConfirmado = noConfirmado;
-        acumuladorDeVotos.seAbstiene = seAbstiene;
-        acumuladorDeVotos.fechaUltimaActualizacion = Date.now();
-      } else {
-        console.log('No hay votos: ' + data);
-        console.log(data);
-      }
-    });
-  });
-  request.on('error', (e) => {
-      console.log('Error accediendo a los datos: ' + e.message);
-  });
-  request.end();
-
-
-}
+setImmediate(recolector.obtenerVotos);
+setInterval(recolector.obtenerVotos, 86400000);
