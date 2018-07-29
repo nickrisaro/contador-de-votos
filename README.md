@@ -37,3 +37,12 @@ node_modules/.bin/now secrets add id-planilla "<ID-DE-LA-PLANILLA>"
     ```bash
     node_modules/.bin/now alias <nueva_url> contador-de-votos
     ```
+# Ver los logs
+1. Buscar la url
+```bash
+node_modules/.bin/now ls
+```
+2. Ver los logs
+```bash
+node_modules/.bin/now logs -f <url>
+```
