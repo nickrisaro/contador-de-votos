@@ -24,4 +24,4 @@ server.listen(port, hostname, () => {
 });
 
 setImmediate(recolector.obtenerVotos);
-setInterval(recolector.obtenerVotos, 86400000);
+setInterval(recolector.obtenerVotos, 3600000);
