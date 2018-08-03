@@ -3,7 +3,7 @@ Contador de votos en base a los datos cargados en una planilla de Google Sheets
 
 # Ejecución local
 * Instalar node (se desarrolló con la versión 8.11.3 LTS)
-* Exportar las variables de ambiente ID_PLANILLA y GOOGLE_API_KEY
+* Exportar las variables de ambiente TELEGRAM_TOKEN, ID_PLANILLA y GOOGLE_API_KEY
 * Ejecutar
     ```bash
     npm start
@@ -17,6 +17,9 @@ node_modules/.bin/now secrets add google-api-key "<API-KEY>"
 ```
 ```bash
 node_modules/.bin/now secrets add id-planilla "<ID-DE-LA-PLANILLA>"
+```
+```bash
+node_modules/.bin/now secrets add telegram-token "<TELEGRAM_TOKEN>"
 ```
 
 # Deploy en now
