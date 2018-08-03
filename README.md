@@ -13,14 +13,15 @@ Contador de votos en base a los datos cargados en una planilla de Google Sheets
 # Configuración en now
 Se deben agregar las variables de ambiente como secrets de now
 ```bash
-node_modules/.bin/now secrets add google-api-key "<API-KEY>"
+node_modules/.bin/now secrets add google-api-key "<API_KEY>"
 ```
 ```bash
-node_modules/.bin/now secrets add id-planilla "<ID-DE-LA-PLANILLA>"
+node_modules/.bin/now secrets add id-planilla "<ID_PLANILLA>"
 ```
 ```bash
 node_modules/.bin/now secrets add telegram-token "<TELEGRAM_TOKEN>"
 ```
+Estas variables deben estar exportadas en el archivo now.json
 
 # Deploy en now
 1. Eliminar el deploy anterior, si existe
