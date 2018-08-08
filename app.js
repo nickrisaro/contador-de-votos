@@ -28,7 +28,7 @@ server.listen(port, hostname, () => {
 });
 
 setImmediate(recolector.obtenerVotos);
-setInterval(recolector.obtenerVotos, 3600000);
+setInterval(recolector.obtenerVotos, 300000);
 
 var bot = new TelegramBot(TELEGRAM_TOKEN, {polling: true});
 bot.getMe().then(function (me) {
