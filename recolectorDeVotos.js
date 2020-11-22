@@ -4,7 +4,7 @@ const { ID_PLANILLA, GOOGLE_API_KEY } = process.env
 
 const options = {
   hostname: 'sheets.googleapis.com',
-  path: '/v4/spreadsheets/' + ID_PLANILLA + '/values/Senadores!S2:S73?key=' + GOOGLE_API_KEY,
+  path: '/v4/spreadsheets/' + ID_PLANILLA + '/values/Nuevo%20Congreso!K260:K331?key=' + GOOGLE_API_KEY,
 }
 
 const acumuladorDeVotos = {
@@ -36,14 +36,14 @@ class RecolectorDeVotos {
 
           if(votos != undefined && votos != null) {
             votos.forEach(voto => {
-              const posicion = voto[0];
-              if(posicion === 'A Favor') {
+              const posicion = voto[0].toLowerCase();
+              if(posicion === 'a favor') {
                 aFavor++;
-              } else if(posicion === 'En Contra') {
+              } else if(posicion === 'en contra') {
                 enContra++;
-              } else if(posicion === 'No confirmado') {
+              } else if(posicion === 'indefinido' || posicion === 'sin datos') {
                 noConfirmado++;
-              } else if(posicion === 'Se Abstiene') {
+              } else if(posicion === 'abstención/ausente') {
                 seAbstiene++;
               } else {
                 console.log('Voto no reconocido ' + voto[0]);
