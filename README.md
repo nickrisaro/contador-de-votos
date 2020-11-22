@@ -14,7 +14,7 @@ Contador de votos en base a los datos cargados en una planilla de Google Sheets
 Se deben agregar las variables de ambiente en Settings > Config Vars
 
 # Pre requisitos
-0. Tener creado el proyecto *poroteosenado* en heroku
+0. Tener creado el proyecto *contador-de-votos* en heroku
 1. Se debe tener instalado el cliente de heroku https://devcenter.heroku.com/articles/heroku-cli
 2. Loguearse ejecutando el comando
 ```bash
@@ -22,7 +22,7 @@ heroku login
 ```
 3. Asociar repositorio de git a heroku
 ```bash
-heroku git:remote -a poroteosenado
+heroku git:remote -a contador-de-votos
 ```
 
 # Deploy en heroku
