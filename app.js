@@ -5,7 +5,7 @@ const TelegramBot = require('node-telegram-bot-api');
 const { TELEGRAM_TOKEN } = process.env
 
 const hostname = '0.0.0.0';
-const port = 3000;
+const port = process.env.PORT || 3000;
 var requestCount = 1;
 var botRequestCount = 1;
 
