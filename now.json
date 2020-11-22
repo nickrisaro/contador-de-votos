@@ -1,7 +1,0 @@
-{
-    "env": {
-      "ID_PLANILLA": "@id-planilla",
-      "GOOGLE_API_KEY": "@google-api-key",
-      "TELEGRAM_TOKEN": "@telegram-token"
-    }
-  }
