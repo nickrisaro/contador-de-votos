@@ -10,43 +10,26 @@ Contador de votos en base a los datos cargados en una planilla de Google Sheets
     ```
 * La aplicación queda levantada en localhost:3000
 
-# Configuración en now
-Se deben agregar las variables de ambiente como secrets de now
-```bash
-node_modules/.bin/now secrets add google-api-key "<API_KEY>"
-```
-```bash
-node_modules/.bin/now secrets add id-planilla "<ID_PLANILLA>"
-```
-```bash
-node_modules/.bin/now secrets add telegram-token "<TELEGRAM_TOKEN>"
-```
-Estas variables deben estar exportadas en el archivo now.json
+# Configuración en heroku
+Se deben agregar las variables de ambiente en Settings > Config Vars
 
-# Deploy en now
-1. Eliminar el deploy anterior, si existe
-    1. Buscar la url
-    ```bash
-    node_modules/.bin/now ls
-    ```
-    2. Eliminar el deploy
-    ```bash
-    node_modules/.bin/now rm <url>
-    ```
-2. Subir la nueva versión
-    ```bash
-    node_modules/.bin/now
-    ```
-3. Agregar un alias
-    ```bash
-    node_modules/.bin/now alias <nueva_url> contador-de-votos
-    ```
-# Ver los logs
-1. Buscar la url
+# Pre requisitos
+0. Tener creado el proyecto *poroteosenado* en heroku
+1. Se debe tener instalado el cliente de heroku https://devcenter.heroku.com/articles/heroku-cli
+2. Loguearse ejecutando el comando
 ```bash
-node_modules/.bin/now ls
+heroku login
 ```
-2. Ver los logs
+3. Asociar repositorio de git a heroku
 ```bash
-node_modules/.bin/now logs -f <url>
+heroku git:remote -a poroteosenado
+```
+
+# Deploy en heroku
+```bash
+git push heroku master
+```
+# Ver los logs
+```bash
+heroku logs --tail
 ```
