@@ -23,9 +23,15 @@ app.listen(port, function(){
 
 setImmediate(recolector.obtenerVotosSenadores);
 setInterval(recolector.obtenerVotosSenadores, 300000);
+setImmediate(recolector.obtenerVotosDiputades);
+setInterval(recolector.obtenerVotosDiputades, 300000);
 
 app.get('/senadores', function(req, res){
 	res.status(200).send(recolector.votosAcumuladosSenadores()); 
+});
+
+app.get('/diputades', function(req, res){
+	res.status(200).send(recolector.votosAcumuladosDiputades()); 
 });
 
 // var bot = new TelegramBot(TELEGRAM_TOKEN, {polling: true});
