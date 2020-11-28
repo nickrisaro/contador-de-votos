@@ -7,7 +7,7 @@ const options = {
   path: '/v4/spreadsheets/' + ID_PLANILLA + '/values/Nuevo%20Congreso!K260:K331?key=' + GOOGLE_API_KEY,
 }
 
-const acumuladorDeVotos = {
+const acumuladorDeVotosSenadores = {
   aFavor: 0,
   enContra: 0,
   noConfirmado: 0,
@@ -17,7 +17,7 @@ const acumuladorDeVotos = {
 
 class RecolectorDeVotos {
 
-    obtenerVotos() {
+    obtenerVotosSenadores() {
       console.log('Buscando nuevos votos');
 
       var request = https.request(options, function (res) {
@@ -50,11 +50,11 @@ class RecolectorDeVotos {
               }
             });
 
-            acumuladorDeVotos.aFavor = aFavor;
-            acumuladorDeVotos.enContra = enContra;
-            acumuladorDeVotos.noConfirmado = noConfirmado;
-            acumuladorDeVotos.seAbstiene = seAbstiene;
-            acumuladorDeVotos.fechaUltimaActualizacion = Date.now();
+            acumuladorDeVotosSenadores.aFavor = aFavor;
+            acumuladorDeVotosSenadores.enContra = enContra;
+            acumuladorDeVotosSenadores.noConfirmado = noConfirmado;
+            acumuladorDeVotosSenadores.seAbstiene = seAbstiene;
+            acumuladorDeVotosSenadores.fechaUltimaActualizacion = Date.now();
           } else {
             console.log('No hay votos: ' + data);
             console.log(data);
@@ -68,8 +68,8 @@ class RecolectorDeVotos {
 
     }
 
-    votosAcumulados() {
-        return acumuladorDeVotos;
+    votosAcumuladosSenadores() {
+        return acumuladorDeVotosSenadores;
     }
 }
 

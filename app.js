@@ -21,11 +21,11 @@ app.listen(port, function(){
   console.log(`Server running in http://localhost:${port}`);
 });
 
-setImmediate(recolector.obtenerVotos);
-setInterval(recolector.obtenerVotos, 300000);
+setImmediate(recolector.obtenerVotosSenadores);
+setInterval(recolector.obtenerVotosSenadores, 300000);
 
 app.get('/senadores', function(req, res){
-	res.status(200).send(recolector.votosAcumulados()); 
+	res.status(200).send(recolector.votosAcumuladosSenadores()); 
 });
 
 // var bot = new TelegramBot(TELEGRAM_TOKEN, {polling: true});
