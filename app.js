@@ -24,7 +24,7 @@ app.listen(port, function(){
 setImmediate(recolector.obtenerVotos);
 setInterval(recolector.obtenerVotos, 300000);
 
-app.get('/', function(req, res){
+app.get('/senadores', function(req, res){
 	res.status(200).send(recolector.votosAcumulados()); 
 });
 
