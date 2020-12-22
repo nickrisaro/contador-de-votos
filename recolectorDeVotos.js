@@ -4,12 +4,12 @@ const { ID_PLANILLA, GOOGLE_API_KEY } = process.env
 
 const optionsSenadores = {
   hostname: 'sheets.googleapis.com',
-  path: '/v4/spreadsheets/' + ID_PLANILLA + '/values/Nuevo%20Congreso!K260:K331?key=' + GOOGLE_API_KEY,
+  path: '/v4/spreadsheets/' + ID_PLANILLA + '/values/Nuevo%20Congreso!K3:K74?key=' + GOOGLE_API_KEY,
 }
 
 const optionsDiputades = {
   hostname: 'sheets.googleapis.com',
-  path: '/v4/spreadsheets/' + ID_PLANILLA + '/values/Nuevo%20Congreso!K3:K259?key=' + GOOGLE_API_KEY,
+  path: '/v4/spreadsheets/' + ID_PLANILLA + '/values/Nuevo%20Congreso!K75:K331?key=' + GOOGLE_API_KEY,
 }
 
 const acumuladorDeVotosSenadores = {
